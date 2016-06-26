@@ -1,16 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Assets.Scripts.Interfaces;
 
-public class ClickMove : MonoBehaviour
+public class ClickMove : MonoBehaviour, IClickable
 {
 
-    public GameObject player;
+    public GameObject MyPlayer;
 	
-	public void OnClick (Vector3 position)
+	public void OnClick (RaycastHit hit)
 	{
-	    var navPosition = player.GetComponent<NavigatePosition>();
-	    var netMove = player.GetComponent<NetworkMove>();
-        netMove.OnMove(position);
-        navPosition.NavigateTo(position);
+	    var navigator = MyPlayer.GetComponent<Navigator>();
+	    var netMove = MyPlayer.GetComponent<NetworkMove>();
+        netMove.OnMove(hit.point);
+        navigator.NavigateTo(hit.point);
 	}
 }

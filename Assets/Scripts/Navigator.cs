@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NavigatePosition : MonoBehaviour
+public class Navigator : MonoBehaviour
 {
     private NavMeshAgent agent;
     private Animator _anim;
 
 	// Use this for initialization
-	void Start ()
+	void Awake ()
 	{
 	    agent = GetComponent<NavMeshAgent>();
 	    _anim = GetComponent<Animator>();
